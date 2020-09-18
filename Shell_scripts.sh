@@ -49,4 +49,32 @@ Understanding the difference between Bash Internal and Bash external command
     An External command is a command that is loaded from an executable file on disk or a  different network location
         External commands are normally slower 
 
+
+
+
+##type test  # This will tell you the type of the script i.e if this is a builtin or an external script
+the shell always executes the internal command before the external command
+
+Finding help about scripting components
+##man bash
+##help command_name
+##help trap #This will show you all the trap commands available 
  
+the Advanced Bash Scripting Guide on the website tldp.org also serves as an invaluable tool and it usually gets updated.
+
+#Assignment 
+create a script that copies the contnts of the log file  /var/log/messages to /var/log/messages.old and deletes the contents of the var/log/messages file
+
+
+:Solution
+
+#!/bin/bash
+#This is a script that copies /var/log contents and clears current contents of the file
+#usage: ./clearlogs
+
+cp /var/log/messages /var/log/messages.old
+cat /dev/null > /var/log/messages
+echo log file copied and cleaned up
+
+exit 0
+
