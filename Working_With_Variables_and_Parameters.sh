@@ -135,14 +135,38 @@ echo which directory do you want to activate
 read DIR 
 
 cd $DIR
-pwd
-ls
+pwd       #prints the name of the current directory
+ls        #prints the contents of the current directory
 
-exit 0
-
- 
+exit 0  # This exits the subdirectory to the parent shell
 
 
+
+How to define the variables at the start of a shell/file 
+
+/etc/profile is processes when opening a login shell
+
+    *All variables defined here are available in all subshells  for that specific user
+    * User specific versions can be used in ~/.bash_profile
+
+/etc/bashrc is processes when opening a subshell
+
+    *Variables defined here are included in subshells from that point on
+    *User specific versions can be used in ~/.bashrc
+
+
+
+#Sourcing 
+*********
+
+By using sourcing, the contents of one script can be included in another script
+
+This is a very common method to seperate static script code from dynamic content
+    *This dynamic content consist of variables and functions
+
+Use the source command or the . command to source scripts
+
+Do NOT use exit at the end of a script that needs to be sourced 
 
 
 
