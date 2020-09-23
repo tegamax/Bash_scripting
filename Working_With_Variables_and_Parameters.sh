@@ -115,6 +115,33 @@ If no input is provided, the script will just pause until the user presses the E
 
 
 
+#Understanding Variables and Subshells
+**************************************
+
+
+A variable is effective only in the shell where it was defined
+
+use export to make it also available in subshells (downwards)
+
+There is no way to make variables available in parent shells (If you want the variable to be avaiable in the parent shell, then decleare it there.)
+
+
+
+#!/bin/bash
+#
+# showing variable use between shells
+
+echo which directory do you want to activate
+read DIR 
+
+cd $DIR
+pwd
+ls
+
+exit 0
+
+ 
+
 
 
 
