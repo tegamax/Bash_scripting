@@ -170,6 +170,24 @@ Do NOT use exit at the end of a script that needs to be sourced
 
 
 
+Master Script
+
+#!/bin/bash 
+# Example script to show how sourcing works
+
+.  /root/sourceme
+
+echo the value of the variable '$COLOR' is $COLOR       #The single quote here tells the shell not to interprete it's contents but just to show the contents of the single quotes
+
+exit 0
+
+Input script /root/sourceme
+
+COLOR=red
+
+#vim /etc/rc.d/init.d/functions   # This shows all the working functions that are currently in the init parent directory
+
+
 
 
    
