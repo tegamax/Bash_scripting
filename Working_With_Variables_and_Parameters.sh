@@ -190,4 +190,65 @@ COLOR=red
 
 
 
+#Quoting
+********
+
+The bash shell uses different special characters
+
+
+Character   |   Meaning
+~           |   Home directory
+`           |   Command Substitution`
+#           |   Comment
+$           |   Variable Expression
+&           |   Background job
+*           |   String Wildcard
+(           |   Start Subshell
+)           |   End subshell
+\           |   Quote next character
+|           |   pipe        #This means the output for command 1 chosses the input for command 2
+[           |   Start character set Wildcard
+]           |   End characterr Wildcard
+{           |   Start command block
+}           |   End Command block
+;           |   Shell command seperator 
+'           |   Strong Quotes
+"           |   Weak Quote
+<           |   Input Quote
+>           |   Output Quote
+/           |   Pathname directory seperator 
+?           |   Single character wildcard
+'
+
+When a command is interpreted by the shell, the shell interprets all special characters
+    The process is known as command line parsing
+
+Commands themselves may interprete parts of the command line as well
+To ensure that a special character is interpreted by the command and not by the shell use quoting
+
+Quoting is used to treat special characters literally
+
+Hence if a string of characters is surrounded with single quotation marks, all characters are stripped of the special meaning they may have
+
+    Imagine echo 2 *3 > 5, which ensures that find interpreted  #this will place the numbers 2 and 3 into the location 5 and it will treat 5 as a directory.
+    #cat 5 will contail values 2 and 3 . but when using echo '2 * 3 > 5' you will get the literal from that.
+    Or imagine find .-name '*.doc' which ensures that find interprets *.doc and not the shell #Here the find command will find the string within the quotes
+Double quotess are weak quotes and treat only some special characters as special
+
+A backslash can be used to escape the one following character 
+
+
+Double quotes ignore pipe characters, aliases, tilde substitution, wildcard expression, and splitting into words using delimiters
+
+Double quotes do allow parameter substitution, command substitution, and arithemetic expression evaluation
+
+Best Pratice: use single quotes, unless you specifically need parameter, command, or arithmetic substitution
+
+
+
+
+
+
+
+
    
