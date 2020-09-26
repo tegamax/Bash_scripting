@@ -245,10 +245,91 @@ Double quotes do allow parameter substitution, command substitution, and arithem
 Best Pratice: use single quotes, unless you specifically need parameter, command, or arithmetic substitution
 
 
+#Handling Script arguments
+*************************
+
+
+Any argument that was used when starting a script, can be dealth with from within the script
+
+Use $1, $2 and so on to refer to the first, the second, etc. argument
+
+$0 refert to the name of the script itself
+
+Use ${nn} or shift to refer to arguments beyond 9
+
+Arguments that are stored in $1 etc are read only and cannot be changed from within the script
 
 
 
 
+Example of argument usage
+
+#!/bin/bash
+#
+#Simple demo script with arguments
+#Run this script with the names of one or more people
+'''
+This script is a very simple one that only takes in two arguments when running it. But it returns null when there is no argument given 
+and truncates when more than than two arguments are given
+'''
+
+echo "Hello $1 how are you"
+echo "Hello $2 how are you"
+
+exit 0
 
 
-   
+*Instructions to run on the command line 
+
+vim simpleargument   #then paste the above script from (#!/bin/bash) to the (exit 0) line
+chmod +x simpleargument
+./simpleargument  Bob Pete #This runs the script with results
+#Hello Bob how are you
+#Hello Pete how are you
+
+
+./simpleargument  Bob Pete lisa alex charlie #This truncates the first two arguments and discards the rest. the result will be
+#Hello Bob how are you
+#Hello Pete how are you
+
+./simpleargument  Bob       #This returns only one item in the result, and leaving the other value as null
+#Hello Bob how are you
+#Hello  how are you
+
+
+The previous example works only if the amount of arguments is known before handled
+
+if this is not the case, use for to evaluate all possible arguments
+
+Use $@ to refer to all arguments provided, where all arguments can be treated one by one
+
+Use $# to count the amount of all arguments provided
+
+Use $* if you need a single string that contains all arguments (Use specific cases only)
+
+
+*Dealing with Arguments
+
+#!/bin/bash
+#Script that shows how arguments are handled
+
+echo "\$* gives $*"  
+echo "\$# gives $#"
+echo "\$@ gives $@"
+echo "\$0 is $0"
+
+
+Showing the interpreatation of \$*
+
+for i in "$*"
+do
+    echo $i
+done
+
+Showing the interpreatation of \$@
+for j in "$@"
+do 
+    echo $j
+
+done
+exit 0
