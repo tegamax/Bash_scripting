@@ -66,7 +66,8 @@ the Advanced Bash Scripting Guide on the website tldp.org also serves as an inva
 create a script that copies the contnts of the log file  /var/log/messages to /var/log/messages.old and deletes the contents of the var/log/messages file
 
 
-:Solution
+:Solution 1
+***********
 
 #!/bin/bash
 #This is a script that copies /var/log contents and clears current contents of the file
@@ -77,4 +78,3 @@ cat /dev/null > /var/log/messages
 echo log file copied and cleaned up
 
 exit 0
-

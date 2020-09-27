@@ -418,9 +418,92 @@ Shift is useful in older shell versions that do not understand ${10} etc
 
 echo "The arguments provided are $*"   #This referrs to all arguments
 echo "The value of \$1 is $1"
-shift 
+echo "The entire string is $*"
+shift
 echo "The new value of \$1 is $1"
+echo "The entire string now is $*"
 
-exit 
+exit
+
+
+
+#Running the script with inputs
+vim shiftargument
+shiftargument a b c 
+
+
+#The solution after running the script will be
+The arguments provided are a b c
+The value of $1 is a
+The entire string is a b c 
+The new value of $1 is b    # We now see what the shit has done is basically shifted the whole sting right by one. more like shifting the indexing from 0 to 1
+The entire string now is b c 
+
+
+
+
+Using command substitution:
+***************************
+
+Command substitution allows using the result of a commans in the script
+
+Useful to provide ultimate flexibility
+
+Two allowed syntaxes:
+
+`command` (Deprecated)   #it means it is not longer inuse in recent shells
+
+$(command) (Preferred)
+
+ls -l $(which passwd)  #This command will be showing you the exact path to the passwd file. #And the -l is providing you with the long listing information
+
+
+
+
+#!/bin/bash
+#This script cpoies /var/log contents and clears current contents of the file
+#Usage: ./clearlogs
+
+
+cp /var/log/messages /var/log/messages.$(date +%d-%m-%y)   #This simply renames the name of the file to an extension with date: /var/log/messages.26-09-20
+cat /dev/null > /var/log/messages     # This prints the copy of the files to the messages file but in this case, nothing will be printed out 
+echo log file copied and cleaned out 
+
+exit 0
+
+
+
+
+String Verification
+********************
+
+When working with arguments and input, it is useful to be able to verify availabliity and correct use of a string
+
+use test -z to check if a string is empty 
+
+    test -z $1 && exit 1    # The double and operator(&&) here means it's the rest of the line is only activated when the first command is successful
+
+use [[ ... ]] to check for specific patterns 
+
+    [[  $1=='[a-z]*'  ]]   echo $1 does not start with a letter #This is another way to do a string verification is by including a double equal sign (==)
+    #following by the string we are trying to match here, it is inbetween a single quote
+    # this pattern basically searches for where the arguments starts with any letter between a to z after which there is a logical or statement 
+    #denoted by two pipes (||). this command will run only if the first command is not true 
+    #also take note of the space between the test cases as this mskes the results entirely different or wrong 
+
+    use this  ($1=='[a-z]*')     
+    not this ($1=='[a-z]*')
+
+
+
+
+Using Here Documents
+********************
+
+In a here document, I/O redirection is used to feed a command list into an interractive program or command, such as for instance ftp or cat
+
+use it in scripts to replace echo for long texts that need to be displayed
+
+use it in a script, such as an FTP client interface .
 
 
