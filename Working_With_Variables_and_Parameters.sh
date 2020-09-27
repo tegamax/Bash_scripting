@@ -313,10 +313,10 @@ Use $* if you need a single string that contains all arguments (Use specific cas
 #!/bin/bash
 #Script that shows how arguments are handled
 
-echo "\$* gives $*"  
-echo "\$# gives $#"
-echo "\$@ gives $@"
-echo "\$0 is $0"
+echo "\$* gives $*"     #This will get all the values of the arguments
+echo "\$# gives $#"     #This will get the count of all the given arguments
+echo "\$@ gives $@"     #This will get all the values of the arguments, but this is done one after the other unlike * that does it all in a list or string format
+echo "\$0 is $0"        #This will be the name of the script
 
 
 Showing the interpreatation of \$*
@@ -333,3 +333,94 @@ do
 
 done
 exit 0
+
+
+*Instructions to run on the command line 
+
+vim nicearguments    #The paste the contents of the code above into the script
+chmod +x nicearguments
+nicearguments a b c
+
+#The results will now be:
+
+$* gives a b c
+$# gives 3
+$@ gives a b c 
+$0 is /root/bin/nicearg 
+a b c
+a 
+b 
+c 
+
+
+
+Handling User Input Through Arguments or Input
+
+#!/bin/bash
+#Script that shows how to make sure that user input is provided
+
+if [ -z $1 ]  #This is to check (Like run a test) if the given argument is empty or not
+
+then
+
+        echo provide filenames
+        read FILENAMES   #when you're using variable to define a variable you don't need to put the dollar "$" symbol in front of it  
+else 
+        FILENAMES="$@"
+    
+fi 
+
+echo the following filenames have been provided: $FILENAMES
+
+
+
+Understanding the need to use shift
+***********************************
+
+#!/bin/bash
+#
+#Simple demo script with arguments
+#Run this script with the names of one or more people
+'''
+ 
+'''
+
+echo "Hello $1 how are you"
+echo "Hello $2 how are you"
+echo "Hello $10 how are you"    #Here we are trying to substitute the entry for the tenth argument #We can also see how the 0 <Zero> in the quote remains as a string 
+exit 0
+
+
+#Running the code, 
+
+simpleargument a b c d e f g h i j 
+
+#the results are:
+
+Hello a how are you
+Hello b how are you
+Hello a0 how are you   #This comes as a suprise as we find out that the script doesn't get the j value. how do we solve this 
+#We can solve this by using the curly braces around the 10 in $10 to look like this:  ${10}. the only problem being that some shells don't recognize it.
+
+it simply does not understand $10 but it goes up to $9 # We can use 'shift' to solve this problem
+
+
+*Using Shift 
+
+Shift removes the first argument from a list so that the second argument gets stored in $1
+
+Shift is useful in older shell versions that do not understand ${10} etc
+
+
+
+#!/bin/bash
+#Showing the use of shift
+
+echo "The arguments provided are $*"   #This referrs to all arguments
+echo "The value of \$1 is $1"
+shift 
+echo "The new value of \$1 is $1"
+
+exit 
+
+
