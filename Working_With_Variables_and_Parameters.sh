@@ -507,3 +507,12 @@ use it in scripts to replace echo for long texts that need to be displayed
 use it in a script, such as an FTP client interface .
 
 
+
+
+*******************
+
+In a here document, I/O redirection is used to feed a command list into an interractive program or command, such as for instance ftp or cat
+
+use it in scripts to replace echo for long texts that need to be displayed
+
+use it in a script, such as an FTP client interface .
