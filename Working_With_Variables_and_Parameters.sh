@@ -508,11 +508,31 @@ use it in a script, such as an FTP client interface .
 
 
 
+#!/bin/bash
+#script that shows how here documents can be used
+#as an alternative to the echo command
 
-*******************
+cat <<End-of-message    # Here what we see is that the cat behaves like the echo command . 
+#It displays all the command on screen till it reaches the input message command (End-of-message in this case)
+-------------------------------------
+This is line 1 of the message
+This is line 2 of the message
+This is the last line of the message
+--------------------------------------
+End-of-message
 
-In a here document, I/O redirection is used to feed a command list into an interractive program or command, such as for instance ftp or cat
 
-use it in scripts to replace echo for long texts that need to be displayed
 
-use it in a script, such as an FTP client interface .
+#!/bin/bash
+#script that shows how text to be sent by wall
+#is feeded through a here document
+
+wall << EndOfMessage   #Here the wall command redirects everything on the screen till it encounters EndOfMessage
+The menu for today is:
+1.  Healthy soup and salad
+2.  Chips and fish
+3.  Steak with carrots
+
+EndOfMessage
+
+
