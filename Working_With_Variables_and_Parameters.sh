@@ -543,13 +543,54 @@ EndOfMessage
 #!/bin/bash 
 #example of a scripted FTP session
 
-lftp localhost <<EndOfSession
+lftp localhost <<EndOfSession     #This gets in touch with an ftp server #opens the interface
 ls 
 gets hosts
 bye
 EndOfSession
 
 echo the file is now downloaded
+
+
+
+Write a script with a name totmp.
+This script should copy all files of which the names are provided as arguments on the command line to the users home directory.
+If no files have been provided, the script should use read to ask for file names, and copy all file names provided in the answer to the 
+users home directory
+
+
+
+
+totmp mitre pillow manners orthodox
+
+#!/bin/bash
+#script that shows how to make sure that the user input is provided
+
+if [ -z $1 ] 
+
+then 
+    echo Provide filenames
+    read FILENAMES 
+
+else FILENAMES="$@"
+
+fi 
+
+
+echo the following filenames have been provided: $FILENAMES
+for i in $FILENAMES
+do 
+    cp $i $HOME 
+done
+
+
+ 
+
+
+
+
+
+
 
 
 
