@@ -532,7 +532,24 @@ The menu for today is:
 1.  Healthy soup and salad
 2.  Chips and fish
 3.  Steak with carrots
-
 EndOfMessage
+
+#What is the difference between wall and cat 
+
+
+
+
+
+#!/bin/bash 
+#example of a scripted FTP session
+
+lftp localhost <<EndOfSession
+ls 
+gets hosts
+bye
+EndOfSession
+
+echo the file is now downloaded
+
 
 
