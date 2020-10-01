@@ -552,6 +552,9 @@ EndOfSession
 echo the file is now downloaded
 
 
+Shell Example:
+**************
+
 
 Write a script with a name totmp.
 This script should copy all files of which the names are provided as arguments on the command line to the users home directory.
