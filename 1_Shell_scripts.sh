@@ -18,7 +18,7 @@ that is if the previous method did not work
 
 
 #Commands to start with
-**********************************************************************
+***************************************
 
 
 
@@ -36,7 +36,7 @@ mv hello bin
 
 ./bin
 
-always use the command #which myscript. to know if there is anything in path directory that exist with the name myscript and hence is ok to use that variable name 
+always use the command #which myscript. To know if there is anything in path directory that exist with the name myscript and hence is ok to use that variable name 
 
 
 #Creating  your first shell script.
