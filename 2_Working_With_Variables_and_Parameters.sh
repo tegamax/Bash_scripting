@@ -326,7 +326,7 @@ do
     echo $i
 done
 
-Showing the interpreatation of \$@
+Showing the interpretation of \$@
 for j in "$@"
 do 
     echo $j
