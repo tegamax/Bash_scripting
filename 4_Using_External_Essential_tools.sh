@@ -1,7 +1,7 @@
 
 
 Using the grep utility
-**********
+*********************
 
 grep is a very flexible tool to search for text patterns based on regular expressions
 
